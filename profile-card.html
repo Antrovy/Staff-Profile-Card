@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Staff Profile Card</title>
+<style>
+    body {
+        background: #f4f4f7;
+        font-family: "Inter", sans-serif;
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    .profile-card {
+        background: #ffffff;
+        width: 380px;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+        border-top: 6px solid #3b3a7a; /* Firm color */
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .header h2 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+    }
+
+    .header p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #777;
+    }
+
+    .section-title {
+        margin: 20px 0 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #3b3a7a;
+        text-transform: uppercase;
+    }
+
+    .info-block {
+        margin-bottom: 8px;
+    }
+
+    .info-block span {
+        display: block;
+        font-size: 14px;
+        color: #444;
+        margin-bottom: 3px;
+    }
+
+    .label {
+        font-weight: 600;
+        color: #222;
+    }
+</style>
+</head>
+<body>
+
+<div class="profile-card">
+    <div class="header">
+        <h2>Staff Name</h2>
+        <p>
+            <input type="text" placeholder="Enter position" style="width:120px;">
+            • Martinez Trial Attorneys
+        </p>
+    </div>
+
+    <div class="section-title">Basic Information</div>
+    <div class="info-block">
+        <span><span class="label">Preferred Name:</span> <input type="text" placeholder="Enter preferred name"></span>
+        <span><span class="label">Pronouns:</span> <input type="text" placeholder="Enter pronouns"></span>
+        <span><span class="label">Department:</span> <input type="text" placeholder="Enter department"></span>
+        <span><span class="label">Discord:</span> <input type="text" placeholder="Enter Discord"></span>
+        <span><span class="label">Roblox:</span> <input type="text" placeholder="Enter Roblox username"></span>
+    </div>
+
+    <div class="section-title">Professional Background</div>
+    <div class="info-block">
+        <span><span class="label">Experience:</span> <input type="text" placeholder="Enter experience"></span>
+        <span><span class="label">Role Summary:</span> <input type="text" placeholder="Enter role summary"></span>
+    </div>
+
+    <div class="section-title">Skills & Interests</div>
+    <div class="info-block">
+        <span><span class="label">Strengths:</span> <input type="text" placeholder="Enter strengths"></span>
+        <span><span class="label">Interests:</span> <input type="text" placeholder="Enter interests"></span>
+    </div>
+
+    <div class="section-title">Contact</div>
+    <div class="info-block">
+        <span><span class="label">Availability:</span> <input type="text" placeholder="Enter availability"></span>
+        <span><span class="label">Best Contact:</span> <input type="text" placeholder="Enter best contact"></span>
+    </div>
+
+    <button id="exportBtn" style="margin-top:20px;width:100%;padding:10px;background:#3b3a7a;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;">
+        Export as Image
+    </button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+    document.getElementById('exportBtn').onclick = function() {
+        html2canvas(document.querySelector('.profile-card')).then(function(canvas) {
+            var link = document.createElement('a');
+            link.download = 'profile-card.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    };
+    </script>
+</div>
+
+</body>
+</html>
