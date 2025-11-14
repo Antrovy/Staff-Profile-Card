@@ -1,5 +1,7 @@
-This is a profile card that staff can use. It was originally created for a fictional law firm (Martinez Trial Attorneys) in a roleplay community.
+# Staff Profile Card Template
 
-You can join our community at: discord.gg/7YTXAcWqPS
+This repository hosts a simple, customizable HTML profile card for staff members of the firm.  
+It is designed to be hosted using **GitHub Pages**, making it easy for staff to preview, copy, or customize their own cards.
 
-How to use? Head over to profile-card.html and open the file. You can then edit the values as necessary. After yo uare done, click on "Export as Image" and it will download directly.
+Join our community at: discord.gg/7YTXAcWqPS
+---
