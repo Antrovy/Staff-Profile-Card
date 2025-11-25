@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Staff Profile Card</title>
+<title>Law Firm Profile Card</title>
+
 <style>
     body {
-        background: #f4f4f7;
-        font-family: "Inter", sans-serif;
+        background: #ececec;
+        font-family: "Inter", serif;
         display: flex;
         justify-content: center;
         padding: 40px;
@@ -14,11 +15,28 @@
 
     .profile-card {
         background: #ffffff;
-        width: 380px;
-        padding: 25px;
-        border-radius: 16px;
-        box-shadow: 0 8px 18px rgba(0,0,0,0.10);
-        border-top: 6px solid #3b3a7a; /* Firm color */
+        width: 420px;
+        padding: 30px;
+        border-radius: 14px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+        border: 1px solid #d2d2d2;
+    }
+
+    /* Watermark Seal */
+    .profile-card::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 350px;
+        height: 350px;
+        background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Scale_of_justice.svg/1024px-Scale_of_justice.svg.png') no-repeat center;
+        background-size: 60%;
+        opacity: 0.06;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
     }
 
     .header {
@@ -28,97 +46,136 @@
 
     .header h2 {
         margin: 0;
-        font-size: 24px;
-        font-weight: 700;
-        color: #333;
-    }
-
-    .header p {
-        margin: 5px 0 0;
-        font-size: 14px;
-        color: #777;
-    }
-
-    .section-title {
-        margin: 20px 0 10px;
-        font-size: 16px;
-        font-weight: 600;
-        color: #3b3a7a;
+        font-size: 26px;
+        font-weight: 800;
+        color: #1a1a1a;
+        letter-spacing: 0.3px;
         text-transform: uppercase;
     }
 
-    .info-block {
-        margin-bottom: 8px;
+    .header p {
+        margin: 6px 0 0;
+        font-size: 15px;
+        color: #555;
+        font-weight: 500;
     }
 
-    .info-block span {
-        display: block;
-        font-size: 14px;
-        color: #444;
-        margin-bottom: 3px;
+    .section-title {
+        margin: 20px 0 8px;
+        font-size: 15px;
+        font-weight: 700;
+        color: #2a2a2a;
+        text-transform: uppercase;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 4px;
+    }
+
+    .info-block {
+        margin-bottom: 10px;
     }
 
     .label {
-        font-weight: 600;
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
         color: #222;
     }
+
+    .value {
+        font-size: 14px;
+        color: #333;
+    }
+
+    /* Dropdown Styling */
+    select {
+        margin-top: 5px;
+        padding: 8px;
+        width: 100%;
+        font-size: 14px;
+        border-radius: 6px;
+        border: 1px solid #bfbfbf;
+        background: #fdfdfd;
+        font-family: inherit;
+    }
+
+    /* Signature Block */
+    .signature-block {
+        margin-top: 25px;
+        padding-top: 15px;
+        border-top: 1px solid #dcdcdc;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .signature-name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    .signature-title {
+        font-size: 13px;
+        color: #555;
+    }
+
 </style>
 </head>
 <body>
 
 <div class="profile-card">
+
     <div class="header">
-        <h2>Staff Name</h2>
-        <p>
-            <input type="text" placeholder="Enter position" style="width:120px;">
-            • Martinez Trial Attorneys
-        </p>
+        <h2>Attorney Profile</h2>
+        <p>Blackwater & Pierce Legal Group</p>
     </div>
 
-    <div class="section-title">Basic Information</div>
+    <div class="section-title">Staff Information</div>
+
     <div class="info-block">
-        <span><span class="label">Name:</span> <input type="text" placeholder="Enter name"></span>
-        <span><span class="label">Preferred Name:</span> <input type="text" placeholder="Enter preferred name"></span>
-        <span><span class="label">Pronouns:</span> <input type="text" placeholder="Enter pronouns"></span>
-        <span><span class="label">Department:</span> <input type="text" placeholder="Enter department"></span>
-        <span><span class="label">Discord:</span> <input type="text" placeholder="Enter Discord"></span>
-        <span><span class="label">Roblox:</span> <input type="text" placeholder="Enter Roblox username"></span>
+        <span class="label">Full Name</span>
+        <span class="value">Johnathan A. Pierce</span>
     </div>
 
-    <div class="section-title">Professional Background</div>
     <div class="info-block">
-        <span><span class="label">Experience:</span> <input type="text" placeholder="Enter experience"></span>
-        <span><span class="label">Role Summary:</span> <input type="text" placeholder="Enter role summary"></span>
+        <span class="label">Position</span>
+        <span class="value">Senior Attorney</span>
     </div>
 
-    <div class="section-title">Skills & Interests</div>
     <div class="info-block">
-        <span><span class="label">Strengths:</span> <input type="text" placeholder="Enter strengths"></span>
-        <span><span class="label">Interests:</span> <input type="text" placeholder="Enter interests"></span>
+        <span class="label">Department</span>
+        <select>
+            <option>Executive Management Division</option>
+            <option>Trial Litigation Division</option>
+            <option>Criminal Prosecution Division</option>
+            <option>Civil Actions & Tort Division</option>
+            <option>Corporate & Regulatory Counsel Division</option>
+            <option>Human Capital & Compliance Division</option>
+            <option>Public Affairs & Communications Office</option>
+            <option>Internal Audit & Professional Standards</option>
+            <option>Records & Administrative Services</option>
+        </select>
     </div>
 
     <div class="section-title">Contact</div>
+
     <div class="info-block">
-        <span><span class="label">Availability:</span> <input type="text" placeholder="Enter availability"></span>
-        <span><span class="label">Best Contact:</span> <input type="text" placeholder="Enter best contact"></span>
+        <span class="label">Email</span>
+        <span class="value">jpierce@blackwaterpierce.com</span>
     </div>
 
-    <button id="exportBtn" style="margin-top:20px;width:100%;padding:10px;background:#3b3a7a;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;">
-        Export as Image
-    </button>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script>
-    document.getElementById('exportBtn').onclick = function() {
-        html2canvas(document.querySelector('.profile-card')).then(function(canvas) {
-            var link = document.createElement('a');
-            link.download = 'profile-card.png';
-            link.href = canvas.toDataURL();
-            link.click();
-        });
-    };
-    </script>
+    <div class="info-block">
+        <span class="label">Office Extension</span>
+        <span class="value">Ext. 204</span>
+    </div>
+
+    <div class="signature-block">
+        <div>Digitally Signed,</div>
+        <div class="signature-name">Johnathan A. Pierce</div>
+        <div class="signature-title">Senior Attorney, Litigation Division</div>
+    </div>
+
 </div>
 
 </body>
 </html>
-
