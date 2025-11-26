@@ -177,21 +177,58 @@
         Export as Image
     </button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
     document.getElementById('exportBtn').onclick = function() {
+    
+        // Step 1 — Replace all inputs + textareas with static DIVs
+        const fields = document.querySelectorAll('input, textarea');
+        const originals = [];
+    
+        fields.forEach(field => {
+            const wrapper = document.createElement('div');
+            wrapper.className = "export-field";
+            wrapper.style.minHeight = field.offsetHeight + "px";
+            wrapper.style.padding = "8px 10px";
+            wrapper.style.border = "1px solid #ccc";
+            wrapper.style.borderRadius = "8px";
+            wrapper.style.whiteSpace = "pre-wrap";
+            wrapper.style.fontSize = "14px";
+            wrapper.style.lineHeight = "1.4";
+            wrapper.style.background = "#f8f8f8";
+            wrapper.textContent = field.value;
+    
+            // Save original
+            originals.push({ field, wrapper });
+    
+            // Replace
+            field.style.display = "none";
+            field.parentNode.insertBefore(wrapper, field);
+        });
+    
+        // Step 2 — Take screenshot
         html2canvas(document.querySelector('.profile-card')).then(function(canvas) {
+    
+            // Download
             var link = document.createElement('a');
             link.download = 'profile-card.png';
             link.href = canvas.toDataURL();
             link.click();
+    
+            // Step 3 — Restore original inputs
+            originals.forEach(item => {
+                item.wrapper.remove();
+                item.field.style.display = "";
+            });
         });
+    
     };
     </script>
+
 </div>
 
 </body>
 </html>
+
 
 
 
