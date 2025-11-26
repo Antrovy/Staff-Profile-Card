@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Law Firm Profile Card</title>
-
+<title>Staff Profile Card</title>
 <style>
     body {
-        background: #ececec;
-        font-family: "Inter", serif;
+        background: #f4f4f7;
+        font-family: "Inter", sans-serif;
         display: flex;
         justify-content: center;
         padding: 40px;
@@ -16,14 +15,12 @@
     .profile-card {
         background: #ffffff;
         width: 420px;
-        padding: 30px;
-        border-radius: 14px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-        border: 1px solid #d2d2d2;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+        border-top: 6px solid #3b3a7a;
     }
-
+    
     /* Watermark Seal */
     .profile-card::before {
         content: "";
@@ -38,7 +35,7 @@
         transform: translate(-50%, -50%);
         pointer-events: none;
     }
-
+    
     .header {
         text-align: center;
         margin-bottom: 25px;
@@ -46,42 +43,59 @@
 
     .header h2 {
         margin: 0;
-        font-size: 26px;
-        font-weight: 800;
-        color: #1a1a1a;
-        letter-spacing: 0.3px;
-        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
     }
 
     .header p {
-        margin: 6px 0 0;
-        font-size: 15px;
-        color: #555;
-        font-weight: 500;
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #777;
+    }
+
+    /* ------- INPUT STYLING ------- */
+
+    input[type="text"], textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin-top: 4px;
+
+        font-size: 14px;
+        border: 1.5px solid #ccc;
+        border-radius: 6px;
+
+        background: #fafafa;
+        resize: vertical;   /* user can resize inputs */
+        min-height: 38px;
+    }
+
+    /* Make header position input wider */
+    .header input[type="text"] {
+        width: 60%;
+        min-height: 34px;
+        resize: horizontal;
     }
 
     .section-title {
-        margin: 20px 0 8px;
-        font-size: 15px;
-        font-weight: 700;
-        color: #2a2a2a;
+        margin: 20px 0 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #3b3a7a;
         text-transform: uppercase;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 4px;
     }
 
     .info-block {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
 
     .label {
-        display: block;
-        font-size: 14px;
-        font-weight: 700;
+        font-weight: 600;
         color: #222;
+        font-size: 14px;
     }
-
-    .value {
+     .value {
         font-size: 14px;
         color: #333;
     }
@@ -98,51 +112,25 @@
         font-family: inherit;
     }
 
-    /* Signature Block */
-    .signature-block {
-        margin-top: 25px;
-        padding-top: 15px;
-        border-top: 1px solid #dcdcdc;
-        font-family: "Courier New", monospace;
-        font-size: 14px;
-        color: #333;
-    }
-
-    .signature-name {
-        font-size: 16px;
-        font-weight: bold;
-        margin-top: 8px;
-    }
-
-    .signature-title {
-        font-size: 13px;
-        color: #555;
-    }
-
 </style>
 </head>
 <body>
 
 <div class="profile-card">
-
     <div class="header">
-        <h2>Attorney Profile</h2>
-        <p>Blackwater & Pierce Legal Group</p>
+        <h2>Staff Profile</h2>
+        <p>
+            <input type="text" placeholder="Enter position">
+            • Martinez Trial Attorneys
+        </p>
     </div>
 
-    <div class="section-title">Staff Information</div>
-
+    <div class="section-title">Basic Information</div>
     <div class="info-block">
-        <span class="label">Full Name</span>
-        <span class="value">Johnathan A. Pierce</span>
-    </div>
-
-    <div class="info-block">
-        <span class="label">Position</span>
-        <span class="value">Senior Attorney</span>
-    </div>
-
-    <div class="info-block">
+        <span class="label">Name:</span> <input type="text" placeholder="Enter name">
+        <span class="label">Preferred Name:</span> <input type="text" placeholder="Enter preferred name">
+        <span class="label">Pronouns:</span> <input type="text" placeholder="Enter pronouns">
+        <div class="info-block">    
         <span class="label">Department</span>
         <select>
             <option>Executive Management Division</option>
@@ -155,26 +143,50 @@
             <option>Internal Audit & Professional Standards</option>
             <option>Records & Administrative Services</option>
         </select>
+        </div>
+        <span class="label">Discord:</span> <input type="text" placeholder="Enter Discord">
+        <span class="label">Roblox:</span> <input type="text" placeholder="Enter Roblox username">
+    </div>
+
+    <div class="section-title">Professional Background</div>
+    <div class="info-block">
+        <span class="label">Experience:</span> 
+        <textarea placeholder="Enter experience"></textarea>
+
+        <span class="label">Role Summary:</span>
+        <textarea placeholder="Enter role summary"></textarea>
+    </div>
+
+    <div class="section-title">Skills & Interests</div>
+    <div class="info-block">
+        <span class="label">Strengths:</span> 
+        <textarea placeholder="Enter strengths"></textarea>
+
+        <span class="label">Interests:</span> 
+        <textarea placeholder="Enter interests"></textarea>
     </div>
 
     <div class="section-title">Contact</div>
-
     <div class="info-block">
-        <span class="label">Email</span>
-        <span class="value">jpierce@blackwaterpierce.com</span>
+        <span class="label">Availability:</span> <input type="text" placeholder="Enter availability">
+        <span class="label">Best Contact:</span> <input type="text" placeholder="Enter best contact">
     </div>
 
-    <div class="info-block">
-        <span class="label">Office Extension</span>
-        <span class="value">Ext. 204</span>
-    </div>
+    <button id="exportBtn" style="margin-top:20px;width:100%;padding:10px;background:#3b3a7a;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;">
+        Export as Image
+    </button>
 
-    <div class="signature-block">
-        <div>Digitally Signed,</div>
-        <div class="signature-name">Johnathan A. Pierce</div>
-        <div class="signature-title">Senior Attorney, Litigation Division</div>
-    </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+    document.getElementById('exportBtn').onclick = function() {
+        html2canvas(document.querySelector('.profile-card')).then(function(canvas) {
+            var link = document.createElement('a');
+            link.download = 'profile-card.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    };
+    </script>
 </div>
 
 </body>
