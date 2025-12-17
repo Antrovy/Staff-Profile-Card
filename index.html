@@ -93,18 +93,23 @@
     }
 
     .export-field {
+    display: block;
+    width: 100%;
+
     background: #f8f8f8;
     border: 1px solid #ccc;
     border-radius: 8px;
+
     padding: 10px 12px;
 
+    font-family: "Inter", sans-serif;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.65;
 
     white-space: pre-wrap;
-    word-break: break-word;
-    overflow-wrap: anywhere;
+    word-break: break-all;
 
+    box-sizing: border-box;
     margin-top: 5px;
     }
 
@@ -202,8 +207,6 @@
 </div>
 
 <!-- html2canvas -->
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-
 <script>
 document.getElementById("exportBtn").addEventListener("click", function () {
 
@@ -211,26 +214,36 @@ document.getElementById("exportBtn").addEventListener("click", function () {
     const originals = [];
 
     fields.forEach(field => {
-    const div = document.createElement("div");
-    div.className = "export-field";
 
-    if (field.tagName === "SELECT") {
-        div.textContent = field.options[field.selectedIndex].text;
-    } else {
-        div.textContent = field.value;
-    }
+        let exportEl = document.createElement("pre");
+        exportEl.className = "export-field";
 
-    div.style.width = field.offsetWidth + "px";
+        let value = "";
+        if (field.tagName === "SELECT") {
+            value = field.options[field.selectedIndex].text;
+        } else {
+            value = field.value;
+        }
 
-    originals.push({ field, div });
+        // Normalize text to prevent canvas compression
+        value = value.replace(/\r\n/g, "\n");
 
-    field.style.display = "none";
-    field.parentNode.insertBefore(div, field);
+        exportEl.textContent = value;
+
+        // LOCK layout dimensions
+        exportEl.style.width = field.offsetWidth + "px";
+        exportEl.style.minHeight = field.offsetHeight + "px";
+
+        originals.push({ field, exportEl });
+
+        field.style.display = "none";
+        field.parentNode.insertBefore(exportEl, field);
     });
 
     html2canvas(document.querySelector(".profile-card"), {
         scale: 2,
-        useCORS: true
+        useCORS: true,
+        letterRendering: true
     }).then(canvas => {
 
         const link = document.createElement("a");
@@ -239,13 +252,16 @@ document.getElementById("exportBtn").addEventListener("click", function () {
         link.click();
 
         originals.forEach(item => {
-            item.div.remove();
+            item.exportEl.remove();
             item.field.style.display = "";
         });
     });
 });
 </script>
 
+</script>
+
 </body>
 </html>
+
 
