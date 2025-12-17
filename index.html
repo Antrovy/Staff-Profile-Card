@@ -93,14 +93,19 @@
     }
 
     .export-field {
-        background: #f8f8f8;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 8px 10px;
-        font-size: 14px;
-        line-height: 1.4;
-        white-space: pre-wrap;
-        margin-top: 5px;
+    background: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 12px;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+
+    margin-top: 5px;
     }
 
     #exportBtn {
@@ -206,19 +211,21 @@ document.getElementById("exportBtn").addEventListener("click", function () {
     const originals = [];
 
     fields.forEach(field => {
-        const div = document.createElement("div");
-        div.className = "export-field";
+    const div = document.createElement("div");
+    div.className = "export-field";
 
-        if (field.tagName === "SELECT") {
-            div.textContent = field.options[field.selectedIndex].text;
-        } else {
-            div.textContent = field.value;
-        }
+    if (field.tagName === "SELECT") {
+        div.textContent = field.options[field.selectedIndex].text;
+    } else {
+        div.textContent = field.value;
+    }
 
-        originals.push({ field, div });
+    div.style.width = field.offsetWidth + "px";
 
-        field.style.display = "none";
-        field.parentNode.insertBefore(div, field);
+    originals.push({ field, div });
+
+    field.style.display = "none";
+    field.parentNode.insertBefore(div, field);
     });
 
     html2canvas(document.querySelector(".profile-card"), {
@@ -241,3 +248,4 @@ document.getElementById("exportBtn").addEventListener("click", function () {
 
 </body>
 </html>
+
