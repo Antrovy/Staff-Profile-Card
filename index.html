@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Staff Profile Card</title>
+
 <style>
     body {
         background: #f4f4f7;
@@ -13,6 +14,7 @@
     }
 
     .profile-card {
+        position: relative;
         background: #ffffff;
         width: 420px;
         padding: 25px;
@@ -20,7 +22,7 @@
         box-shadow: 0 8px 18px rgba(0,0,0,0.10);
         border-top: 6px solid #3b3a7a;
     }
-    
+
     /* Watermark Seal */
     .profile-card::before {
         content: "";
@@ -35,7 +37,7 @@
         transform: translate(-50%, -50%);
         pointer-events: none;
     }
-    
+
     .header {
         text-align: center;
         margin-bottom: 25px;
@@ -54,29 +56,21 @@
         color: #777;
     }
 
-    /* ------- INPUT STYLING ------- */
-
-    textarea {
-    width: 100%;
-    min-height: 45px;
-    resize: vertical;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 8px;
-    border: 1px solid #bfbfbf;
-    background: #fafafa;
-    color: #333;
-    box-sizing: border-box;
-    line-height: 1.4;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
+    textarea, input, select {
+        width: 100%;
+        min-height: 34px;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1px solid #bfbfbf;
+        background: #fafafa;
+        box-sizing: border-box;
+        margin-top: 5px;
+        resize: vertical;
     }
 
-    /* Make header position input wider */
-    .header input[type="text"] {
+    .header input {
         width: 60%;
-        min-height: 34px;
-        resize: horizontal;
     }
 
     .section-title {
@@ -93,31 +87,40 @@
 
     .label {
         font-weight: 600;
-        color: #222;
         font-size: 14px;
-    }
-     .value {
-        font-size: 14px;
-        color: #333;
+        display: block;
+        margin-top: 10px;
     }
 
-    /* Dropdown Styling */
-    select {
+    .export-field {
+        background: #f8f8f8;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 8px 10px;
+        font-size: 14px;
+        line-height: 1.4;
+        white-space: pre-wrap;
         margin-top: 5px;
-        padding: 8px;
-        width: 100%;
-        font-size: 14px;
-        border-radius: 6px;
-        border: 1px solid #bfbfbf;
-        background: #fdfdfd;
-        
     }
 
+    #exportBtn {
+        margin-top: 20px;
+        width: 100%;
+        padding: 12px;
+        background: #3b3a7a;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+    }
 </style>
 </head>
+
 <body>
 
 <div class="profile-card">
+
     <div class="header">
         <h2>Staff Profile</h2>
         <p>
@@ -127,16 +130,23 @@
     </div>
 
     <div class="section-title">Basic Information</div>
+
     <div class="info-block">
-        <span class="label">Name:</span> <textarea type="text" placeholder="Enter name"></textarea>
-        <span class="label">Preferred Name:</span> <textarea type="text" placeholder="Enter preferred name"></textarea>
-        <span class="label">Pronouns:</span> <textarea type="text" placeholder="Enter pronouns"></textarea>
-        <div class="info-block">    
-        <span class="label">Department</span>
+        <label class="label">Name</label>
+        <textarea placeholder="Enter name"></textarea>
+
+        <label class="label">Preferred Name</label>
+        <textarea placeholder="Enter preferred name"></textarea>
+
+        <label class="label">Pronouns</label>
+        <textarea placeholder="Enter pronouns"></textarea>
+
+        <label class="label">Department</label>
         <select>
             <option>Executive Management Division</option>
             <option>Trial Litigation Division</option>
             <option>Criminal Prosecution Division</option>
+            <option>Criminal Defense Division</option>
             <option>Civil Actions & Tort Division</option>
             <option>Corporate & Regulatory Counsel Division</option>
             <option>Human Capital & Compliance Division</option>
@@ -144,91 +154,90 @@
             <option>Internal Audit & Professional Standards</option>
             <option>Records & Administrative Services</option>
         </select>
-        </div>
-        <span class="label">Discord:</span> <textarea type="text" placeholder="Enter Discord"></textarea>
-        <span class="label">Roblox:</span> <textarea type="text" placeholder="Enter Roblox username"></textarea>
+
+        <label class="label">Discord</label>
+        <textarea placeholder="Enter Discord"></textarea>
+
+        <label class="label">Roblox</label>
+        <textarea placeholder="Enter Roblox username"></textarea>
     </div>
 
     <div class="section-title">Professional Background</div>
+
     <div class="info-block">
-        <span class="label">Experience:</span> 
+        <label class="label">Experience</label>
         <textarea placeholder="Enter experience"></textarea>
 
-        <span class="label">Role Summary:</span>
+        <label class="label">Role Summary</label>
         <textarea placeholder="Enter role summary"></textarea>
     </div>
 
     <div class="section-title">Skills & Interests</div>
+
     <div class="info-block">
-        <span class="label">Strengths:</span> 
+        <label class="label">Strengths</label>
         <textarea placeholder="Enter strengths"></textarea>
 
-        <span class="label">Interests:</span> 
+        <label class="label">Interests</label>
         <textarea placeholder="Enter interests"></textarea>
     </div>
 
     <div class="section-title">Contact</div>
+
     <div class="info-block">
-        <span class="label">Availability:</span> <textarea type="text" placeholder="Enter availability"></textarea>
-        <span class="label">Best Contact:</span> <textarea type="text" placeholder="Enter best contact"></textarea>
+        <label class="label">Availability</label>
+        <textarea placeholder="Enter availability"></textarea>
+
+        <label class="label">Best Contact</label>
+        <textarea placeholder="Enter best contact"></textarea>
     </div>
 
-    <button id="exportBtn" style="margin-top:20px;width:100%;padding:10px;background:#3b3a7a;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;">
-        Export as Image
-    </button>
-
-    <script>
-    document.getElementById('exportBtn').onclick = function() {
-    
-        // Step 1 — Replace all inputs + textareas with static DIVs
-        const fields = document.querySelectorAll('input, textarea');
-        const originals = [];
-    
-        fields.forEach(field => {
-            const wrapper = document.createElement('div');
-            wrapper.className = "export-field";
-            wrapper.style.minHeight = field.offsetHeight + "px";
-            wrapper.style.padding = "8px 10px";
-            wrapper.style.border = "1px solid #ccc";
-            wrapper.style.borderRadius = "8px";
-            wrapper.style.whiteSpace = "pre-wrap";
-            wrapper.style.fontSize = "14px";
-            wrapper.style.lineHeight = "1.4";
-            wrapper.style.background = "#f8f8f8";
-            wrapper.textContent = field.value;
-    
-            // Save original
-            originals.push({ field, wrapper });
-    
-            // Replace
-            field.style.display = "none";
-            field.parentNode.insertBefore(wrapper, field);
-        });
-    
-        // Step 2 — Take screenshot
-        html2canvas(document.querySelector('.profile-card')).then(function(canvas) {
-    
-            // Download
-            var link = document.createElement('a');
-            link.download = 'profile-card.png';
-            link.href = canvas.toDataURL();
-            link.click();
-    
-            // Step 3 — Restore original inputs
-            originals.forEach(item => {
-                item.wrapper.remove();
-                item.field.style.display = "";
-            });
-        });
-    
-    };
-    </script>
+    <button id="exportBtn">Export as Image</button>
 
 </div>
 
+<!-- html2canvas -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<script>
+document.getElementById("exportBtn").addEventListener("click", function () {
+
+    const fields = document.querySelectorAll("input, textarea, select");
+    const originals = [];
+
+    fields.forEach(field => {
+        const div = document.createElement("div");
+        div.className = "export-field";
+
+        if (field.tagName === "SELECT") {
+            div.textContent = field.options[field.selectedIndex].text;
+        } else {
+            div.textContent = field.value;
+        }
+
+        originals.push({ field, div });
+
+        field.style.display = "none";
+        field.parentNode.insertBefore(div, field);
+    });
+
+    html2canvas(document.querySelector(".profile-card"), {
+        scale: 2,
+        useCORS: true
+    }).then(canvas => {
+
+        const link = document.createElement("a");
+        link.download = "staff-profile.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+
+        originals.forEach(item => {
+            item.div.remove();
+            item.field.style.display = "";
+        });
+    });
+});
+</script>
+
 </body>
 </html>
-
-
-
-
