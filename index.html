@@ -94,24 +94,19 @@
     }
 
     .export-field {
-    display: block;
-    width: 100%;
-
-    background: #f8f8f8;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-
-    padding: 10px 12px;
-
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    line-height: 1.65;
-
-    white-space: pre-wrap;
-    word-break: break-all;
-
-    box-sizing: border-box;
-    margin-top: 5px;
+        display: block;
+        width: 100%;
+        background: #f8f8f8;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        white-space: normal;
+        word-break: break-word;
+        box-sizing: border-box;
+        margin-top: 5px;
 }
 
     #exportBtn {
@@ -230,7 +225,8 @@ document.querySelectorAll("#exportBtn").forEach(button => {
                 div.textContent = field.value;
             }
 
-            div.style.width = field.offsetWidth + "px";
+            div.style.width = "100%";
+            div.style.minHeight = field.offsetHeight + "px";
 
             originals.push({ field, div });
 
@@ -258,6 +254,7 @@ document.querySelectorAll("#exportBtn").forEach(button => {
 </script>
 </body>
 </html>
+
 
 
 
